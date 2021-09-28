@@ -33,8 +33,7 @@ function onLoginSubmit(event){
     const username = loginInput.value;//username은 login 창의 input
     localStorage.setItem(USERNAME_KEY, username);
     // greeting.innerText = "Hello " + username + "!"; 아래와 같은 스트링과 변수 같이 쓰는 법
-    greeting.innerText = `Hello ${username}`;
-    greeting.classList.remove(HIDDEN_CLASSNAME);
+    paintGreetings(username);
     //onLoginSubmit 함수가 실행되면 이벤트의 취소되고 로그인 폼 사라짐 
 }
 // function handleLinkClick(){
@@ -48,6 +47,10 @@ loginForm.addEventListener("submit",onLoginSubmit); //submit은 엔터키나 버
 
 // link.addEventListener("click", handleLinkClick); //링크를 click하면 handleLinkClick 함수 실행
 
+function paintGreetings(username){
+    greeting.classList.remove(HIDDEN_CLASSNAME);
+    greeting.innerText = `Hello ${username}`;
+}
 
 const savedUsername = localStorage.getItem(USERNAME_KEY);
 
@@ -58,6 +61,6 @@ loginForm.addEventListener("submit", onLoginSubmit);
 }
 else{
     //show the greetings
-    greeting.classList.remove(HIDDEN_CLASSNAME);
-    greeting.innerText = `Hello ${savedUsername} again!`;
+    paintGreetings(savedUsername);
+    
 }
