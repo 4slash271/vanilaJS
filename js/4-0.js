@@ -27,9 +27,10 @@ function onLoginSubmit(event){
 
     // }
 
-    event.preventDefault();//이벤트의 전파를 막지 않고 이벤트 취소. submit 하되 새로고침 되지 않고 이벤트 사라진다.
-    const username = loginInput.value;//username은 login 창의 input
+    event.preventDefault();//브라우저의 이벤트 전파를 막지 않고 이벤트 취소. submit 하되 새로고침 되지 않고 이벤트 사라진다.
     loginForm.classList.add("hidden");//loginForm에 hidden 클래스 추가 {display=none}
+    const username = loginInput.value;//username은 login 창의 input
+    localStorage.setItem("username", username);
     // greeting.innerText = "Hello " + username + "!"; 아래와 같은 스트링과 변수 같이 쓰는 법
     greeting.innerText = `Hello ${username}`;
     greeting.classList.remove(HIDDEN_CLASSNAME);
