@@ -35,3 +35,6 @@ const food = document.querySelector("#foods span:first-child");
 const restaurant = document.querySelector("#foods span:last-child");
 
 console.log(foods[3]);
+
+console.log(Math.random()*10);
+//randome은 무작위의 수를 보여주지만 소수점 아래는 제거되지 않음
