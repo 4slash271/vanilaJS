@@ -1,37 +1,43 @@
+/*******************설정해야 하는 것들**********************/
+//1.내가 제시하는 수의 범위
+//2.그 중 내가 고른 수
+//3.컴퓨터가 제시하는 랜덤 수
+//4.두 수의 비교시 출력되는 값
+
 /**************변수 설정*****************/
 const rangeForm = document.querySelector("#range-form");
 const rangeInput = document.querySelector("#range-form input");
 const myNumberForm = document.querySelector("#my-number-form");
-const myNumber = document.querySelector("#my-number");
-const RANGE_NUMBER = "rangeNumber";
+const myNumberInput = document.querySelector("#my-number-form #my-number");
+const compareForm = document.querySelector("#compare-form");
+const myResult = compareForm.querySelector("#mine-result");
+const computerResult = compareForm.querySelector("#computer-result");
 
-//1.변수 설정하기
-//범위 설정 폼과 범위 설정 값
-//선택 설정 폼과 선택된 값
 
-//범위 설정 값 로컬 스토리지에 저장하기
-function setRangeMumber(event){
+/*****************************************/
+function paintComputerNumber(computerNumber){
+    computerResult.innerText = `the machine chose: ${computerNumber}`;
+
+}
+function paintMyNumber(myNumber){
+    myResult.innerText = `You chose: ${myNumber}`
+}
+s
+/*****************************************/
+function rangeSubmit(event){
     event.preventDefault();
     const rangeNumber = rangeInput.value;
-    localStorage.setItem(RANGE_NUMBER,rangeNumber);
-    getMyNumber(rangeNumber);
+    const randomNumber = Math.floor(Math.random()*rangeNumber);
+    const computerNumber = randomNumber;
+    paintComputerNumber(computerNumber);
 }
-
-rangeForm.addEventListener("number",setRangeMumber);
-
-function getMyNumber(rangeNumber){
-
-    myNumber.value = Math.floor(Math.random()* rangeNumber);
+function myNumberSubmit(event){
+    event.preventDefault()
+    const myNumber = myNumberInput.value;
+    paintMyNumber(myNumber);
 }
-
-
-//선택된 값은 범위 설정된 값에 랜덤 적용한 후 소수점 아래 제거
-//선택된 값 html로 불러와 화면에 나타내기
-//
-
-/***************로컬 스토리지****************/
-
-
-
-/*******************************/
-/*******************************/
+/*****************************************/
+rangeForm.addEventListener("submit",rangeSubmit)
+myNumberForm.addEventListener("submit",myNumberSubmit);
+/*****************************************/
+/*****************************************/
