@@ -1,5 +1,4 @@
 
-/****************************************************/
 
 
 
@@ -7,14 +6,25 @@
 const toDoForm = document.getElementById("todo-form"); 
 const toDoInput = toDoForm.querySelector("input");
 const toDoList = document.getElementById("todo-lists");
+const toDos = []; 
 
+
+
+
+/****************************************************/
+//toDoForm의 제출 클릭->handleToDoSubmut 실행->toDoInput의 value가 newToDo에 복사됨
+//->toDos 배열 안에 newTodo 추가되고 화면에 표시->saveToDo 실행
+//로컬 스토리지에 toDos 배열 안의 "toDos" 저장.
+function saveToDos(){
+    localStorage.setItem("toDos",JSON.stringify(toDos));
+}
 /****************************************************/
 //paintToDo에서 실행된 button이 click되면 deletToDo실행
 //list 변수는 이벤트의 부모 요소를 타겟으로 찾는다.
 //list(이벤트=클릭된 버튼의 부모인 li) 삭제 
 function deleteToDO(event){
- const list = event.target.parentElement; 
- list.remove();
+    const list = event.target.parentElement; 
+    list.remove();
 
 }
 
@@ -44,13 +54,16 @@ function paintToDo(newTodo){
 //이벤트 새로고침 방지
 //newTodo에 toDoInput에 저장된 value가 복사된다.
 //복사된 후 toDoInput의 value는 지워진다.
+//toDos의 배열 안에 newToDo가 추가된다.
 //paintToDo 함수가 newTodo에 대해 실행된다.
+//saveToDos 실행.
 function handleToDoSubmit(event){
     event.preventDefault();
     const newTodo = toDoInput.value;//새로운 변수에 먼저 toDoInput의 값이 복사되기 때문에
     toDoInput.value = "";//이후에 값이 비어져도 완전히 사라지는 것은 아니다
+    toDos.push(newTodo);
     paintToDo(newTodo);
-    
+    saveToDos();
 }
 /****************************************************/
 //toDoForm의 submit을 실행시키면 handleToDoSubmit이 동작한다!
