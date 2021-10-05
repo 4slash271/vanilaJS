@@ -1,6 +1,5 @@
 
 /****************************************************/
-/****************************************************/
 
 
 
@@ -9,6 +8,15 @@ const toDoForm = document.getElementById("todo-form");
 const toDoInput = toDoForm.querySelector("input");
 const toDoList = document.getElementById("todo-lists");
 
+/****************************************************/
+//paintToDo에서 실행된 button이 click되면 deletToDo실행
+//list 변수는 이벤트의 부모 요소를 타겟으로 찾는다.
+//list(이벤트=클릭된 버튼의 부모인 li) 삭제 
+function deleteToDO(event){
+ const list = event.target.parentElement; 
+ list.remove();
+
+}
 
 /****************************************************/
 //handleToDoSubmit 함수가 실행되면 newTodo 변수에 대해 paintToDo 실행된다.
@@ -21,7 +29,11 @@ const toDoList = document.getElementById("todo-lists");
 function paintToDo(newTodo){
     const list = document.createElement("li"); 
     const span = document.createElement("span");
+    const button = document.createElement("button");
+    button.innerText = " ❌";
+    button.addEventListener("click", deleteToDO);
     list.appendChild(span);
+    list.appendChild(button);
     span.innerText= newTodo;
     toDoList.appendChild(list);
 }
