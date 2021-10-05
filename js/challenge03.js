@@ -22,7 +22,7 @@ function paintComputerNumber(computerNumber){
 function paintMyNumber(myNumber){
     myResult.innerText = `You chose: ${myNumber}`
 }
-s
+
 /*****************************************/
 function rangeSubmit(event){
     event.preventDefault();

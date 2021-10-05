@@ -16,6 +16,7 @@ const toDoList = document.getElementById("todo-lists");
 //변수 span은 도큐먼트 안의 span
 //list 변수 안에 자식 속성으로 span을 추가한다.
 //span의 내부 텍스트에 변수 newTodo를 넣는다.
+//toDoList(도큐먼트의 ul)의 자식 속성으로 위의 list를 보낸다.
 
 function paintToDo(newTodo){
     const list = document.createElement("li"); 
