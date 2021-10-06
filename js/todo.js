@@ -7,7 +7,7 @@ const toDoForm = document.getElementById("todo-form");
 const toDoInput = toDoForm.querySelector("input");
 const toDoList = document.getElementById("todo-lists");
 const TODOS_KEY = "toDos";
-const toDos = []; 
+let toDos = []; //const -> let :업데이트 가능한 변수 선언.
 
 
 
@@ -42,7 +42,7 @@ function paintToDo(newTodo){
     const list = document.createElement("li"); 
     const span = document.createElement("span");
     const button = document.createElement("button");
-    button.innerText = " ❌";
+    button.innerText = "❌";
     button.addEventListener("click", deleteToDO);
     list.appendChild(span);
     list.appendChild(button);
@@ -77,12 +77,16 @@ toDoForm.addEventListener("submit", handleToDoSubmit);
 //조건문 실행
 //savedToDOs(저장된 배열이)안이 비어있지 않다면
 //parsedToDos 변수 실행 => 로컬스토리지 안에 저장된 문자열 데이터를 배열로 바꾸어 가져온다.
-//가져온 배열에 forEach => 배열 안의 객체당 함수 실행 
+
+//toDos = 이전에 저장된 데이터의 배열
+
+//가져온 배열에 forEach => 배열 안의 객체당 함수 실행 (가져온 이전에 저장된 데이터 배열의 객체마다 paintToDo 함수 실행)
 const savedToDos = localStorage.getItem(TODOS_KEY);
 
 if(savedToDos !== null){
     const parsedToDos = JSON.parse(savedToDos);//string data로 저장된 saveToDos를 array로 바꿔준다.
-    parsedToDos.forEach((item) => console.log("this is trial of", item));//forEach => array의 객체당 한번씩 함수 실행
+    toDos = parsedToDos; 
+    parsedToDos.forEach(paintToDo);//forEach => array의 객체당 한번씩 함수 실행
         
    
 }
