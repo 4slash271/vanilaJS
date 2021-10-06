@@ -6,8 +6,8 @@
 const toDoForm = document.getElementById("todo-form"); 
 const toDoInput = toDoForm.querySelector("input");
 const toDoList = document.getElementById("todo-lists");
+const TODOS_KEY = "toDos";
 const toDos = []; 
-
 
 
 
@@ -16,8 +16,9 @@ const toDos = [];
 //->toDos 배열 안에 newTodo 추가되고 화면에 표시->saveToDo 실행
 //로컬 스토리지에 toDos 배열 안의 "toDos" 저장.
 function saveToDos(){
-    localStorage.setItem("toDos",JSON.stringify(toDos));
+    localStorage.setItem(TODOS_KEY,JSON.stringify(toDos));
 }
+
 /****************************************************/
 //paintToDo에서 실행된 button이 click되면 deletToDo실행
 //list 변수는 이벤트의 부모 요소를 타겟으로 찾는다.
@@ -68,3 +69,16 @@ function handleToDoSubmit(event){
 /****************************************************/
 //toDoForm의 submit을 실행시키면 handleToDoSubmit이 동작한다!
 toDoForm.addEventListener("submit", handleToDoSubmit);
+
+
+const savedToDos = localStorage.getItem(TODOS_KEY);
+
+if(savedToDos !== null){
+    const parsedToDos = JSON.parse(savedToDos);//string data로 저장된 saveToDos를 array로 바꿔준다.
+    parsedToDos.forEach((item) => console.log("this is trial of", item));//forEach => array의 객체당 한번씩 함수 실행
+        
+   
+}
+
+// JSON.parse(localStorage.getItem(TODOS_KEY));
+//localStorage.getItem(TODOS_KEY);일 때는 브라우저에서 toDos 배열 안의 객체들이 객체로 인식되지 않고 스트링으로 인식된다.
