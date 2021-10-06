@@ -14,7 +14,8 @@ const toDos = [];
 /****************************************************/
 //toDoForm의 제출 클릭->handleToDoSubmut 실행->toDoInput의 value가 newToDo에 복사됨
 //->toDos 배열 안에 newTodo 추가되고 화면에 표시->saveToDo 실행
-//로컬 스토리지에 toDos 배열 안의 "toDos" 저장.
+//로컬 스토리지에 toDos 배열 안의 "toDos" 저장. "[a, b, c]" 이런 식으로 데이터 자체가 스트링 안에 들어감!
+//JSON.stringify는 데이터를 문자열화한다. 예)JSON.stringify([1, 'false', false]); => '[1,"false",false]'
 function saveToDos(){
     localStorage.setItem(TODOS_KEY,JSON.stringify(toDos));
 }
@@ -71,6 +72,12 @@ function handleToDoSubmit(event){
 toDoForm.addEventListener("submit", handleToDoSubmit);
 
 
+/****************************************************/
+//savedToDos는 로컬스토리지 안의 "toDos"를 가져오는 것이다. *주의* 위의 함수 saveToDos는 로컬스토리지에 스트링을 배열로 바꾸어 저장하는 함수.
+//조건문 실행
+//savedToDOs(저장된 배열이)안이 비어있지 않다면
+//parsedToDos 변수 실행 => 로컬스토리지 안에 저장된 문자열 데이터를 배열로 바꾸어 가져온다.
+//가져온 배열에 forEach => 배열 안의 객체당 함수 실행 
 const savedToDos = localStorage.getItem(TODOS_KEY);
 
 if(savedToDos !== null){
@@ -80,5 +87,3 @@ if(savedToDos !== null){
    
 }
 
-// JSON.parse(localStorage.getItem(TODOS_KEY));
-//localStorage.getItem(TODOS_KEY);일 때는 브라우저에서 toDos 배열 안의 객체들이 객체로 인식되지 않고 스트링으로 인식된다.
