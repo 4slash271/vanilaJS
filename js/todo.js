@@ -31,7 +31,7 @@ function deleteToDO(event){
 }
 
 /****************************************************/
-//handleToDoSubmit 함수가 실행되면 newTodo 변수에 대해 paintToDo 실행된다.
+//handleToDoSubmit 함수가 실행되면 newToDoObj 변수에 대해 paintToDo 실행된다.
 //변수 list는 도큐먼트 안의 li
 //변수 span은 도큐먼트 안의 span
 //list 변수 안에 자식 속성으로 span을 추가한다.
@@ -40,14 +40,16 @@ function deleteToDO(event){
 
 function paintToDo(newTodo){
     const list = document.createElement("li"); 
+    list.id = newTodo.id;
     const span = document.createElement("span");
+    toDoList.appendChild(list);
     const button = document.createElement("button");
     button.innerText = "❌";
     button.addEventListener("click", deleteToDO);
     list.appendChild(span);
     list.appendChild(button);
-    span.innerText= newTodo;
-    toDoList.appendChild(list);
+    span.innerText= newTodo.innerText;
+    //span.innerText= newTodo; 에서 span.innerText= newㅅTodo.innerText; 로 : push된 toDos가 newToDosObj 안의 text 안에 있음
 }
 
 
@@ -56,15 +58,20 @@ function paintToDo(newTodo){
 //이벤트 새로고침 방지
 //newTodo에 toDoInput에 저장된 value가 복사된다.
 //복사된 후 toDoInput의 value는 지워진다.
-//toDos의 배열 안에 newToDo가 추가된다.
-//paintToDo 함수가 newTodo에 대해 실행된다.
+//newToDoObj 는 newToDo의 텍스트에 밀리초 랜덤 id를 생성한다.
+//toDos의 배열 안에 newToDoObj가 추가된다. (1007 newToDo => newToDoObj로 수정 : newToDO를 객체로 인식하여 할당 )
+//paintToDo 함수가 newToDoObj에 대해 실행된다.
 //saveToDos 실행.
 function handleToDoSubmit(event){
     event.preventDefault();
     const newTodo = toDoInput.value;//새로운 변수에 먼저 toDoInput의 값이 복사되기 때문에
     toDoInput.value = "";//이후에 값이 비어져도 완전히 사라지는 것은 아니다
-    toDos.push(newTodo);
-    paintToDo(newTodo);
+    const newTodoObj = {
+        text: newTodo,
+        id: Date.now(),
+    }
+    toDos.push(newTodoObj);
+    paintToDo(newTodoObj);
     saveToDos();
 }
 /****************************************************/
