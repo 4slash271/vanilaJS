@@ -9,6 +9,14 @@ function overHunred(number){
 };
 console.log(numberContainer.filter(overHunred));
 
+const arr2 = [1, 2, 3, 4];
+arr2.filter(item => item <3);
+
+console.log(arr2.filter(item => item <3));//[1 , 2]
+const newArr2 = arr2.filter(item => item <3);
+console.log(arr2); //[1, 2, 3, 4]
+console.log(newArr2);//[1 , 2]
+
 /**********************변수 설정하기******************************/
 const toDoForm = document.getElementById("todo-form"); 
 const toDoInput = toDoForm.querySelector("input");
@@ -32,10 +40,12 @@ function saveToDos(){
 //list 변수는 이벤트의 부모 요소를 타겟으로 찾는다.
 //list(이벤트=클릭된 버튼의 부모인 li) 삭제 
 function deleteToDO(event){
-    const list = event.target.parentElement; 
+    const list = event.target.parentElement; //
     list.remove();
+    toDos = toDos.filter((toDo) => toDo.id !== parseInt(list.id))//list(이벤트의 부모 요소=>클릭한 엑스 버튼의 부모인 li).id 를 toDos 배열에서 뺀다.
+    saveToDos();
 
-}
+} 
 
 /****************************************************/
 //handleToDoSubmit 함수가 실행되면 newToDoObj 변수에 대해 paintToDo 실행된다.
@@ -49,13 +59,13 @@ function paintToDo(newTodo){
     const list = document.createElement("li"); 
     list.id = newTodo.id;
     const span = document.createElement("span");
+    span.innerText= newTodo.text;
     toDoList.appendChild(list);
     const button = document.createElement("button");
     button.innerText = "❌";
     button.addEventListener("click", deleteToDO);
     list.appendChild(span);
     list.appendChild(button);
-    span.innerText= newTodo.innerText;
     //span.innerText= newTodo; 에서 span.innerText= newㅅTodo.innerText; 로 : push된 toDos가 newToDosObj 안의 text 안에 있음
 }
 
