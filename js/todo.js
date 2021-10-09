@@ -67,6 +67,7 @@ function paintToDo(newTodo){
     list.appendChild(span);
     list.appendChild(button);
     //span.innerText= newTodo; 에서 span.innerText= newㅅTodo.innerText; 로 : push된 toDos가 newToDosObj 안의 text 안에 있음
+    console.log(newTodo);
 }
 
 
