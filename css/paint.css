@@ -23,11 +23,27 @@ body{
     margin-top: 30px;
 }
 
-.controls .controls__range{
+.controls .controls__range input{
+    -webkit-appearance: none;
     margin-bottom: 30px;
-    all: unset;
+    height: 1px;
+    outline: none;
+    background-color: #9c9c9c; 
+    border-color: transparent; 
+    
 }
 
+.controls .controls__range input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    border-radius:50%;
+    cursor: pointer;
+    box-shadow: 2px 3px 10px -1px rgba(114, 114, 114, 0.47);
+    border: 1px solid #b8b8b8;
+  }
+  
 .controls .controls__btns{
     margin-bottom: 20px;
 }
