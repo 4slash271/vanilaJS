@@ -1,0 +1,65 @@
+@import "reset.css";
+body{
+    background-color:#f1f1f1;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+}
+
+.canvas{
+    width: 600px;
+    height: 600px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 2px 3px 10px -1px rgba(114, 114, 114, 0.47);
+}
+
+.controls{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.controls .controls__range{
+    margin-bottom: 30px;
+    all: unset;
+}
+
+.controls .controls__btns{
+    margin-bottom: 20px;
+}
+
+.controls__btns button{
+    all:unset;
+    background-color: white;
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 8px;
+    border:1px solid #b8b8b8;
+    box-shadow: 2px 3px 10px -1px rgba(114, 114, 114, 0.47);
+    color: #6e6e6e;
+}
+
+.controls__btns button:active{
+    transform: scale(0.97);
+}
+
+.controls .controls__colors{
+    display: flex;
+    flex-direction: row;
+}
+
+.controls__colors .controls__color{
+    width: 40px;
+    height: 40px;
+    box-shadow: 2px 5px 17px -1px rgba(114, 114, 114, 0.47);
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 1px;
+
+}
