@@ -47,8 +47,7 @@ body{
 .controls .controls__btns{
     margin-bottom: 20px;
 }
-
-.controls__btns button{
+.controls .controls__btns button{
     all:unset;
     background-color: white;
     width: 50px;
@@ -61,7 +60,8 @@ body{
     color: #6e6e6e;
 }
 
-.controls__btns button:active{
+
+button:active{
     transform: scale(0.97);
 }
 
