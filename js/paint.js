@@ -1,6 +1,7 @@
 const canvas = document.getElementById("jsCanvas");
 const ctx = canvas.getContext("2d");
 const colors = document.getElementsByClassName("jsColor");
+const range = document.getElementById("jsRange");
 
 
 canvas.width = 600;
@@ -38,7 +39,11 @@ function onMouseMove(event) {
   function handleColorClick(event){
       const color = event.target.style.backgroundColor;
       ctx.strokeStyle = color;
+  }
 
+  function handleRangeChange(event){
+    const size = event.target.value;
+    ctx.lineWidth = size;
   }
 
 //mousedown 마우스 포인터가 포인팅 장치를 누를 때
@@ -48,6 +53,9 @@ if(canvas){
     canvas.addEventListener("mousedown",startPainting);//paint = true;
     canvas.addEventListener("mouseup",stopPainting);//paint = false;
     canvas.addEventListener("mouseleave",stopPainting);//paint = false;
+}
+if(range){
+    range.addEventListener("input", handleRangeChange);
 }
 
 
