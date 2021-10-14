@@ -48,7 +48,7 @@ function onMouseMove(event) {
   }
 
   function handleModeClick(event){
-     if(filling === true){//filling의 데이터 유형과 true의 데이터 유형이 같고 value가 같으면 t
+     if(filling === true){//filling의 데이터 유형과 true의 데이터 유형이 같고 value가 같으면 다음을 리턴하라.
        filling = false;
        mode.innerText = "Fill";// mode button의 Fill 그대로
      }
