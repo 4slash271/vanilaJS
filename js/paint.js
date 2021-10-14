@@ -2,7 +2,7 @@ const canvas = document.getElementById("jsCanvas");
 const ctx = canvas.getContext("2d");
 const colors = document.getElementsByClassName("jsColor");
 const range = document.getElementById("jsRange");
-
+const mode = document.getElementById("jsMode");
 
 canvas.width = 600;
 canvas.height = 600;
@@ -11,6 +11,7 @@ canvas.height = 600;
 ctx.strokeStyle = "#2c2c2c";
 ctx.lineWidth = 2.5;
 let painting = false;
+let filling = false;
 
 function stopPainting(){
     painting = false;
@@ -46,6 +47,16 @@ function onMouseMove(event) {
     ctx.lineWidth = size;
   }
 
+  function handleModeClick(event){
+     if(filling === true){//filling의 데이터 유형과 true의 데이터 유형이 같고 value가 같으면 t
+       filling = false;
+       mode.innerText = "Fill";// mode button의 Fill 그대로
+     }
+     else{
+         filling = true;//filling이 true면 paint
+         mode.innerText = "Paint";}
+  }
+
 //mousedown 마우스 포인터가 포인팅 장치를 누를 때
 //mouseup 마우스 포인터가 클릭 상태를 해제할 때
 if(canvas){
@@ -57,6 +68,8 @@ if(canvas){
 if(range){
     range.addEventListener("input", handleRangeChange);
 }
-
+if(mode){
+    mode.addEventListener("click",handleModeClick);
+}
 
 Array.from(colors).forEach(color =>color.addEventListener("click", handleColorClick));
