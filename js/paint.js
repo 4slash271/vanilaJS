@@ -3,12 +3,14 @@ const ctx = canvas.getContext("2d");
 const colors = document.getElementsByClassName("jsColor");
 const range = document.getElementById("jsRange");
 const mode = document.getElementById("jsMode");
+const INITIAL_COLOR = "#2c2c2c";
 
 canvas.width = 600;
 canvas.height = 600;
 
 
-ctx.strokeStyle = "#2c2c2c";
+ctx.strokeStyle = "INITIAL_COLOR";
+ctx.fillStyle = "INITIAL_COLOR";
 ctx.lineWidth = 2.5;
 let painting = false;
 let filling = false;
@@ -40,6 +42,7 @@ function onMouseMove(event) {
   function handleColorClick(event){
       const color = event.target.style.backgroundColor;
       ctx.strokeStyle = color;
+      ctx.fillStyle = color
   }
 
   function handleRangeChange(event){
@@ -47,15 +50,22 @@ function onMouseMove(event) {
     ctx.lineWidth = size;
   }
 
-  function handleModeClick(event){
-     if(filling === true){//filling의 데이터 유형과 true의 데이터 유형이 같고 value가 같으면 다음을 리턴하라.
+  function handleModeClick(){
+     if(filling === true){//1. filling의 데이터 유형과 true의 데이터 유형이 같고 value가 같으면 다음을 리턴하라.
+        //2. 같으면 filling 은 false가 되고 mode는 Fill이 된다 (현재 paint 상태)
        filling = false;
-       mode.innerText = "Fill";// mode button의 Fill 그대로
+       mode.innerText = "Fill";
      }
-     else{
+     else{ //2.filling !== true 라면(false 상태), filling 은 true로 바뀌고 버튼은 paint로 바뀜(fill 상태)
          filling = true;//filling이 true면 paint
-         mode.innerText = "Paint";}
+         mode.innerText = "Paint";
+        }
   }
+  
+  function handleCanvasClick()
+{
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
 
 //mousedown 마우스 포인터가 포인팅 장치를 누를 때
 //mouseup 마우스 포인터가 클릭 상태를 해제할 때
@@ -64,6 +74,7 @@ if(canvas){
     canvas.addEventListener("mousedown",startPainting);//paint = true;
     canvas.addEventListener("mouseup",stopPainting);//paint = false;
     canvas.addEventListener("mouseleave",stopPainting);//paint = false;
+    canvas.addEventListener("click", handleCanvasClick);
 }
 if(range){
     range.addEventListener("input", handleRangeChange);
