@@ -84,3 +84,6 @@ if(mode){
 }
 
 Array.from(colors).forEach(color =>color.addEventListener("click", handleColorClick));
+
+
+releaseEvents
