@@ -1,3 +1,4 @@
+
 const canvas = document.getElementById("jsCanvas");
 const ctx = canvas.getContext("2d");
 const colors = document.getElementsByClassName("jsColor");
@@ -9,8 +10,8 @@ canvas.width = 600;
 canvas.height = 600;
 
 
-ctx.strokeStyle = "INITIAL_COLOR";
-ctx.fillStyle = "INITIAL_COLOR";
+ctx.strokeStyle = INITIAL_COLOR;
+ctx.fillStyle = INITIAL_COLOR;
 ctx.lineWidth = 2.5;
 let painting = false;
 let filling = false;
@@ -18,7 +19,7 @@ let filling = false;
 function stopPainting(){
     painting = false;
 }
-function startPainting(){
+function startPainting(){ 
     painting = true;
 }
 
@@ -42,7 +43,7 @@ function onMouseMove(event) {
   function handleColorClick(event){
       const color = event.target.style.backgroundColor;
       ctx.strokeStyle = color;
-      ctx.fillStyle = color
+      ctx.fillStyle = color;
   }
 
   function handleRangeChange(event){
@@ -62,9 +63,9 @@ function onMouseMove(event) {
         }
   }
   
-  function handleCanvasClick()
-{
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  function handleCanvasClick(){
+    if(filling){
+                ctx.fillRect(0, 0, canvas.width, canvas.height);}
 }
 
 //mousedown 마우스 포인터가 포인팅 장치를 누를 때
@@ -76,6 +77,7 @@ if(canvas){
     canvas.addEventListener("mouseleave",stopPainting);//paint = false;
     canvas.addEventListener("click", handleCanvasClick);
 }
+Array.from(colors).forEach(color =>color.addEventListener("click", handleColorClick));
 if(range){
     range.addEventListener("input", handleRangeChange);
 }
@@ -83,7 +85,3 @@ if(mode){
     mode.addEventListener("click",handleModeClick);
 }
 
-Array.from(colors).forEach(color =>color.addEventListener("click", handleColorClick));
-
-
-releaseEvents
