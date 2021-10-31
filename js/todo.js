@@ -1,21 +1,21 @@
-//filter
-const arr = ["김치찌개", "된장찌개", "부대찌개", "고추장찌개", "보리밥"]
-function soup(food){return food !== "보리밥"};
-arr.filter(soup);
-//['김치찌개', '된장찌개', '부대찌개', '고추장찌개']
-const numberContainer = ["99", "123", "67","3","6777"]
-function overHunred(number){
-    return number <100
-};
-console.log(numberContainer.filter(overHunred));
+// //filter
+// const arr = ["김치찌개", "된장찌개", "부대찌개", "고추장찌개", "보리밥"]
+// function soup(food){return food !== "보리밥"};
+// arr.filter(soup);
+// //['김치찌개', '된장찌개', '부대찌개', '고추장찌개']
+// const numberContainer = ["99", "123", "67","3","6777"]
+// function overHunred(number){
+//     return number <100
+// };
+// console.log(numberContainer.filter(overHunred));
 
-const arr2 = [1, 2, 3, 4];
-arr2.filter(item => item <3);
+// const arr2 = [1, 2, 3, 4];
+// arr2.filter(item => item <3);
 
-console.log(arr2.filter(item => item <3));//[1 , 2]
-const newArr2 = arr2.filter(item => item <3);
-console.log(arr2); //[1, 2, 3, 4]
-console.log(newArr2);//[1 , 2]
+// console.log(arr2.filter(item => item <3));//[1 , 2]
+// const newArr2 = arr2.filter(item => item <3);
+// console.log(arr2); //[1, 2, 3, 4]
+// console.log(newArr2);//[1 , 2]
 
 /**********************변수 설정하기******************************/
 const toDoForm = document.getElementById("todo-form"); 
