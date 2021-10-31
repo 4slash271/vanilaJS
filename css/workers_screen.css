@@ -1,10 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;0,600;0,800;1,400&display=swap');
 @import "../css/reset.css";
+
 body{
     background:linear-gradient(90deg,"7F88DF","DCB3D0","85DBAD");
     font-family: 'Montserrat', sans-serif;
     height: 100vh;
     z-index: 1;
+    width: 100%;
+
+}
+.hidden{
+    display: none;
+}
+input{
+    width: 25em;
+    height: 3em;
+    border-radius: 0.75em;
+    border: none;
+    box-shadow: rgb(116, 116, 116, 0.5) 1px 3px 5px;
+    display: flex;
+    text-align: center;
+    font-size: 1em;
+}
+input:hover,input:focus{
+    outline: none;
 }
 
 h1{
@@ -15,6 +34,48 @@ h1{
     font-weight: 600;
     color: white;
     text-shadow:rgb(197, 93, 62) 2px 3px 10px;
+}
+#login-form{
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+
+
+
+    height: 3em;
+    width: 25em;
+}
+.login-box{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+#login-form input:first-child{
+    width: 75%;
+
+}
+#login-form input:last-child{
+    width: 20%;
+    /* margin-left: 0.45em; */
+    display: flex;
+    justify-content: center;
+}
+#greeting{
+    font-size: 1.3em;
+    position: fixed;
+    top:3em;
+    right: 1.2em;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+}
+.fa-user-circle{
+    transform: scale(1.5);
+    margin-bottom: 0.5em;
 }
 #weather{
     position: fixed;
@@ -37,28 +98,20 @@ h1{
     color: white;
    
 }
-#todo-form{
+.todo-form{
     width: 100%;
     display: flex;
     justify-content: center;
     margin-top: 10em;
 }
 
-#todo-form input{
-    width: 25em;
-    height: 3em;
-    border-radius: 0.75em;
-    border: none;
-    box-shadow: rgb(116, 116, 116, 0.5) 1px 3px 5px;
-    display: flex;
-    text-align: center;
-    font-size: 1em;
-}
+
 #todo-lists{
     width: 100%;
     display: flex;
-    justify-content: center;
-    margin-top: 10em;
+    align-items: center;
+    flex-direction:column-reverse;
+    margin-top: 5em;
 
 }
 #todo-lists li{
@@ -68,18 +121,27 @@ h1{
     border: none;
     box-shadow: rgb(116, 116, 116, 0.5) 1px 3px 5px;
     display: flex;
-
-    text-align: center;
-    font-size: 1em;
     position: relative;
-}
-#todo-lists li span{
+    align-items: center;
+    /* justify-content: center; */
+    background-color: rgba(206, 252, 225, 0.12);
     
 }
+#todo-lists li span{
+   width: 20em;
+   margin-left: 1.2em;
+   /* margin-top: 2em; */
+}
 #todo-lists li button{
+    width: 2.2em;
+    height: 2.2em;
     position: absolute;
     right: 1em;
-    bottom: 1em;
+    bottom: 0.5em;
     border: none;
-    color: black;
+    background-color: transparent;
+}
+#todo-lists li button i{
+    color: white;
+ 
 }

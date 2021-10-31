@@ -1,29 +1,60 @@
-// //filter
-// const arr = ["김치찌개", "된장찌개", "부대찌개", "고추장찌개", "보리밥"]
-// function soup(food){return food !== "보리밥"};
-// arr.filter(soup);
-// //['김치찌개', '된장찌개', '부대찌개', '고추장찌개']
-// const numberContainer = ["99", "123", "67","3","6777"]
-// function overHunred(number){
-//     return number <100
-// };
-// console.log(numberContainer.filter(overHunred));
+/*const loginForm =document.querySelector("#login-form"); 
+//querySelector는 클래스네임, 태그네임 모두 검색 가능하니 아이디표시 필수!
 
-// const arr2 = [1, 2, 3, 4];
-// arr2.filter(item => item <3);
+const loginInput = loginForm.querySelector("input");
+const ligonButton = loginForm.querySelector("button");
+*/
 
-// console.log(arr2.filter(item => item <3));//[1 , 2]
-// const newArr2 = arr2.filter(item => item <3);
-// console.log(arr2); //[1, 2, 3, 4]
-// console.log(newArr2);//[1 , 2]
-
-/**********************변수 설정하기******************************/
-const toDoForm = document.getElementById("todo-form"); 
+/*위의 코드를 요약해서 바꾸면!*/ 
+const loginForm = document.querySelector("#login-form");
+const loginInput = document.querySelector("#login-form input");
+const greeting = document.querySelector("#greeting");
+const toDoForm = document.querySelector(".todo-form"); 
 const toDoInput = toDoForm.querySelector("input");
 const toDoList = document.getElementById("todo-lists");
 const TODOS_KEY = "toDos";
-let toDos = []; //const -> let :업데이트 가능한 변수 선언.
+let toDos = []; 
 
+
+
+const HIDDEN_CLASSNAME = "hidden";
+const USERNAME_KEY = "username";
+
+
+const link = document.querySelector("a");
+
+function onLoginSubmit(event) {
+    event.preventDefault();
+    loginForm.classList.add(HIDDEN_CLASSNAME);
+    const username = loginInput.value;
+    localStorage.setItem(USERNAME_KEY, username);
+    paintGreetings(username);
+  }
+  
+
+function paintGreetings(username){
+    greeting.innerText = `Hello ${username}`;
+    greeting.classList.remove(HIDDEN_CLASSNAME);
+    const user = document.createElement("i");
+    user.className= "fas fa-user-circle";
+    greeting.appendChild(user);
+    toDoForm.classList.remove(HIDDEN_CLASSNAME);
+    toDoInput.classList.remove(HIDDEN_CLASSNAME);
+}
+
+
+const savedUsername = localStorage.getItem(USERNAME_KEY);
+
+if (savedUsername === null) {
+  loginForm.classList.remove(HIDDEN_CLASSNAME);
+  loginForm.addEventListener("submit",onLoginSubmit);
+  toDoForm.classList.add(HIDDEN_CLASSNAME);
+  toDoInput.classList.add(HIDDEN_CLASSNAME);
+} else {
+  
+
+  paintGreetings(savedUsername);
+}
 
 
 /****************************************************/

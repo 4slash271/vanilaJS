@@ -5,18 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/workers_screen.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+  />
     <title>Worker's Screen</title>
 
 </head>
 <body>
     <h1 id="clock">00:00</h1>
-    <div id="weather"><div id = "weather__icon"></div>
+
+    <h4 id="greeting" class="hidden"></h4>
+
+
+    <form id="login-form" class="hidden login-inputs"><div class="login-box">
+    <input required maxlength ="15" 
+     type="text" placeholder="이름을 입력해주세요."/>
+
+ 
+    <input type="submit" value="로그인"/></div>
+    </form>
+
+
+
+
+
+    <div id="weather">
+        <div id = "weather__icon"></div>
     <div id="weather__info">
         <span></span>
         <span></span>
     </div>
     </div>
-    <form id="todo-form">
+    <form class="todo-form hidden">
         <input type="text" placeholder="오늘의 할일">
     </form>
     <ul id="todo-lists">
@@ -25,6 +46,7 @@
 <script src="../js/workers_background.js"></script>  
 <script src="../js/clock.js"></script>  
 <script src="../js/weather.js"></script>
-<script src="../js/todo.js"></script>
+<!-- <script src="../js/todo.js"></script> -->
+<script src="../js/login.js"></script>
 </body>
 </html>
