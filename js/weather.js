@@ -1,20 +1,31 @@
 
+
 const API_KEY = "d448bd0f037cc68b858d9cc0c8556118";
 
 function onGeoSuccess(position){
     const lon =position.coords.longitude;
     const lat =position.coords.latitude;
     
-    const url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+    const url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
+  console.log(url);
     //&units=metric =>화씨온도를 섭씨온도로 바꿔줌
     fetch(url).then(
         response => response.json().then(
-            data => {
-                const weather = document.querySelector("#weather span:first-child");
-                const city = document.querySelector("#weather span:last-child");
+            data => {   
+                const currentWeather = document.querySelector("#weather__info span:first-child");
+                const city = document.querySelector("#weather__info span:last-child");
+                currentWeather.innerText = `${data.main.temp} ℃`;
                 city.innerText = data.name; 
-                weather.innerText = `${data.weather[0].main} / ${data.main.temp} ℃/`}))
+        
 
+                const weatherIcon = document.querySelector("#weather__icon");
+                const iconImg = document.createElement("img");
+                weatherIcon.appendChild(iconImg);
+                iconImg.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+
+            }
+        )
+    )
 
 }
 function onGeoError(){

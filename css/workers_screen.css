@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;0,600;0,800;1,400&display=swap');
+@import "../css/reset.css";
+body{
+    background:linear-gradient(90deg,"7F88DF","DCB3D0","85DBAD");
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    z-index: 1;
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+    font-size: 5em;
+    font-weight: 600;
+    color: white;
+    text-shadow:rgb(197, 93, 62) 2px 3px 10px;
+}
+#weather{
+    position: fixed;
+    top:1.2em;
+    left: 1.2em;
+}
+
+#weather__icon{
+    transform: scale(0.8);
+    z-index: 99;
+    margin: 0;
+}
+
+#weather__info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: -1.8em;
+    color: white;
+   
+}
+#todo-form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10em;
+}
+
+#todo-form input{
+    width: 25em;
+    height: 3em;
+    border-radius: 0.75em;
+    border: none;
+    box-shadow: rgb(116, 116, 116, 0.5) 1px 3px 5px;
+    display: flex;
+    text-align: center;
+    font-size: 1em;
+}
+#todo-lists{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10em;
+
+}
+#todo-lists li{
+    width: 25em;
+    height: 3em;
+    border-radius: 0.75em;
+    border: none;
+    box-shadow: rgb(116, 116, 116, 0.5) 1px 3px 5px;
+    display: flex;
+
+    text-align: center;
+    font-size: 1em;
+    position: relative;
+}
+#todo-lists li span{
+    
+}
+#todo-lists li button{
+    position: absolute;
+    right: 1em;
+    bottom: 1em;
+    border: none;
+    color: black;
+}
